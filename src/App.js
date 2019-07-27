@@ -3,6 +3,7 @@ import { firebaseDb } from './firebase';
 import './App.scss';
 import Message from './components/Message';
 import ChatBox from './components/ChatBox';
+import Hoge from './components/Hoge';
 
 const messageRef = firebaseDb.ref('messages');
 
@@ -11,10 +12,12 @@ class App extends Component {
     super(props);
     this.onTextChange = this.onTextChange.bind(this);
     this.onButtonClick = this.onButtonClick.bind(this);
+    this.fuga = this.fuga.bind(this);
     this.state = {
       text: '',
       user_name: '',
-      messages: []
+      messages: [],
+      hoge: true
     }
   }
 
@@ -63,11 +66,20 @@ class App extends Component {
     })
   }
 
+  fuga(state) {
+    setTimeout(() => {
+      this.setState({
+        hoge: state
+      })
+      console.log("aaaaaaa");
+    }, 2000)
+  }
+
   render() {
     if (this.state.messages.length === 0) {
       console.log("何もないよ");
     }
-
+    console.log(this);
     return (
       <div className="App">
         <div className="message__list">
@@ -76,6 +88,8 @@ class App extends Component {
           })}
         </div>
         <ChatBox onTextChange={this.onTextChange} onButtonClick={this.onButtonClick} />
+        {this.state.hoge && <Hoge fuga={this.fuga} />}
+        <button onClick={() => this.fuga(true)}>hoge復活ボタン</button>
       </div>
     )
   }

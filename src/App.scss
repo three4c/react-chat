@@ -107,3 +107,29 @@
     height: 48px;
   }
 }
+
+.piyo {
+  animation: fade 1s ease-in forwards;
+}
+
+.on {
+  animation: fadeOut 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
