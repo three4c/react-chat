@@ -75,6 +75,12 @@ class App extends Component {
     }, 2000)
   }
 
+  fuga02(state) {
+    this.setState({
+      hoge: state
+    })
+  }
+
   render() {
     if (this.state.messages.length === 0) {
       console.log("何もないよ");
@@ -89,7 +95,7 @@ class App extends Component {
         </div>
         <ChatBox onTextChange={this.onTextChange} onButtonClick={this.onButtonClick} />
         {this.state.hoge && <Hoge fuga={this.fuga} />}
-        <button onClick={() => this.fuga(true)}>hoge復活ボタン</button>
+        <button onClick={() => this.fuga02(true)}>hoge復活ボタン</button>
       </div>
     )
   }
